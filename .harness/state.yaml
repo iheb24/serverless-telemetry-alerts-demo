@@ -8,4 +8,52 @@ repository:
   aws_region: eu-west-3
   terraform_version: 1.15.8
   python_version: '3.13'
-stacks: []
+stacks:
+- theme_id: iot-telemetry
+  title: 'IoT telemetry anomaly detection stack: ingest sensor data via SQS, evaluate spikes in Python,
+    store alerts in DynamoDB, and archive raw data to S3.'
+  status: active
+  support_tier: certified_brick
+  workloads:
+  - package_name: iot_anomaly_detector
+    workload_type: lambda_sqs
+    entrypoint: iot_anomaly_detector.entrypoint.handler
+    env:
+    - name: ALERTS_TABLE_NAME
+      source: plain
+      value: module.alerts_storage.table_name
+      description: DynamoDB table for anomalous alerts.
+    - name: ARCHIVE_BUCKET_NAME
+      source: plain
+      value: module.archive_storage.bucket_name
+      description: S3 bucket for archiving raw payloads.
+    containerized: false
+  infra:
+    module_instances:
+    - module: event_choreography
+      label: telemetry_queue
+      catalog_version: 0.2.0
+      support_tier: certified_brick
+    - module: stateful_storage
+      label: alerts_storage
+      catalog_version: 0.2.0
+      support_tier: certified_brick
+    - module: stateful_storage
+      label: archive_storage
+      catalog_version: 0.2.0
+      support_tier: certified_brick
+    - module: serverless_compute
+      label: anomaly_detector
+      catalog_version: 0.2.0
+      support_tier: certified_brick
+    custom_files: []
+    resources: []
+    ssm_paths: []
+    secret_arns: []
+  changelog:
+  - date: '2026-11-09'
+    action: add_stack
+    summary: 'IoT telemetry anomaly detection stack: ingest sensor data via SQS, evaluate spikes in Python,
+      store alerts in DynamoDB, and archive raw data to S3.'
+    run_id: 20261109-224558-2b4142
+  caveats: []
