@@ -1,0 +1,10 @@
+# Changes here will be overwritten by Copier; do NOT edit manually
+{
+  "_src_path": "/Users/ihebbesbes/workspace/aws-serverless-harness",
+  "_harness_commit": "3ba315fb7005a677977ab8b6f013ff89a485558d",
+  "repo_name": "serverless-telemetry-alerts-demo",
+  "description": "Event-driven serverless telemetry and smart-alerting platform generated deterministically by aws-serverless-harness.",
+  "aws_region": "eu-west-3",
+  "python_version": "3.13",
+  "terraform_version": "1.15.8"
+}

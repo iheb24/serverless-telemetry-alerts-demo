@@ -1,0 +1,11 @@
+# Managed by aws-serverless-harness. Edit via `harness stack` commands;
+# manual edits must keep this file schema-valid or gates will fail.
+schema_version: 1
+repository:
+  name: serverless-telemetry-alerts-demo
+  description: Event-driven serverless telemetry and smart-alerting platform generated deterministically
+    by aws-serverless-harness.
+  aws_region: eu-west-3
+  terraform_version: 1.15.8
+  python_version: '3.13'
+stacks: []
