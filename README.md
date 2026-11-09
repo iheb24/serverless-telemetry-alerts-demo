@@ -54,7 +54,9 @@ terraform -chdir=infra init -backend-config=envs/dev.tfbackend
 <!-- BEGIN_HARNESS_DOCS -->
 ## Stacks
 
-No themed stacks yet — add one with `harness stack add`.
+| Theme | Status | Tier | Workloads |
+| --- | --- | --- | --- |
+| iot-telemetry | active | certified_brick | iot_anomaly_detector |
 
 ## Known Caveats & Next Steps
 
